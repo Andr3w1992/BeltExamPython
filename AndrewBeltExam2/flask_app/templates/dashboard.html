@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Welcome {{user.first_name}} {{user.last_name}}, here are Sasquatch Sightings.</h1>
+        <a href="/createsighting">Create Sighting</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Location</th>
+                    <th scope="col">Reported By</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sighting in all %}
+                <tr>
+                    <td>{{sighting.location}}</td>
+                    <td>{{sighting.creator.first_name}} {{sighting.creator.last_name}}</td>
+                    <td>{{sighting.date_made}}</td>
+                    <td>
+                        <button><a href="/showSighting/{{sighting.id}}">View</a></button>
+                        {% if session['user_id'] == sighting.user_id %}
+                        <button><a href="/editSighting/{{sighting.id}}">Edit</a></button> | 
+                        <button><a href="/delete/{{sighting.id}}">Delete</a></button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

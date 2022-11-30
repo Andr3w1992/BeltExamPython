@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">{{sighting.creator.first_name}} {{sighting.creator.last_name}} edit your Sasquatch Sightings.</h1>
+        <form action="/updateSighting/{{sighting.id}}" method="POST">
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" name="location" id="location" class="form-control" value="{{sighting.location}}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" cols="30" rows="10" class="form-control" value="{{sighting.description}}"></textarea>
+            </div>
+            <div class="form-group"> 
+                <label for="date_made">Date</label>
+                <input type="date" name="date_made" id="date_made" class="form-control" value="{{sighting.date_made}}">
+            </div>
+            <div class="form-group">
+                <label for="num_sasquatch"> Number of Sasquatches</label>
+                <input type="number" name="num_sasquatch" id="num_sasquatch" class="form-control" value="{{sighting.num_sasquatch}}" >
+            </div>
+                <input type="submit" value="Update/Edit Sighting" class="btn btn-primary">
+                <button><a href="/dashboard">Dashboard</a></button>
+                <a href="/logout">Logout</a>
+        </form>
+    </div>
+</body>
+</html>

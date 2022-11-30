@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Sighting</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container col-md p-1">
+        <h1 class="text-center">Welcome {{user.first_name}} {{user.last_name}}, here are Sasquatch Sightings.</h1>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class ="left-side">
+            <p>Location: {{sighting.location}} </p>
+            <p>Description: {{sighting.description}} </p>
+            <p>Date: {{sighting.date_made}} </p>
+            <p>Number: {{sighting.num_sasquatch}}</p>
+            <p>Submitted by: {{sighting.creator.first_name}} {{sighting.creator.last_name}} </p>
+    </div>
+</body>
+</html>
